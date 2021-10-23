@@ -1,0 +1,70 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:b="http://bootsfaces.net/ui">
+    <h:head>
+        <title>Listado de Empleados</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="./../resources/plantillas/plantilla.xhtml">
+            <ui:define name="content">
+                <h:form>
+                    <b:dataTable value="#{empleadoController.empleado}"
+                                 var="empleado"
+                                 excel="true"
+                                 csv="true"
+                                 pdf="true"
+                                 columnVisibility="truen"
+                                 copy="true"
+                                 print="true">
+                        <b:dataTableColumn value="#{empleado.idEmpleado}"
+                                           width="8%"
+                                           label="Identificacion"/>
+                        <b:dataTableColumn value="#{empleado.primapellido}"
+                                           width="15%"
+                                           label="Primer Apellido"/>
+                        <b:dataTableColumn value="#{empleado.segpellido}"
+                                           width="19%"
+                                           label="Segundo Apellido"/>
+                        <b:dataTableColumn value="#{empleado.nombre}"
+                                           width="19%"
+                                           label="Nombre Apellido"/>
+                        <b:dataTableColumn value="#{empleado.fechaIngreso}"
+                                           width="10%"
+                                           style="text-align: center"
+                                           label="Fecha Ingreso"/>
+                        <b:dataTableColumn value="#{empleado.FechaNac}"
+                                           width="10%"
+                                           style="text-align: center"
+                                           label="Fecha Nacimiento"/>
+                         <b:dataTableColumn value="#{empleado.edad}"
+                                           width="19%"
+                                           label="Edad"/>
+                        <b:dataTableColumn value="#{empleado.sexo}"
+                                           width="8%"
+                                           style="text-align: center"
+                                           label="Sexo"/>
+                        <b:dataTableColumn value="#{empleado.telefono}"
+                                           width="19%"
+                                           label="Telefono"/>
+                        <b:dataTableColumn value="#{empleado.email}"
+                                           width="19%"
+                                           label="Email"/>
+                        <b:dataTableColumn width="10%"
+                                           style="text-align: center"
+                                           label="Acción">
+                            <b:commandButton value="Editar"
+                                             action="#{empleadoController.edita(empleado.idEmpleado)}"/>
+                        </b:dataTableColumn>
+                    
+                    </b:dataTable>
+                                 
+                </h:form>
+            </ui:define>
+        </ui:composition>
+        
+    </h:body>
+</html>
+
